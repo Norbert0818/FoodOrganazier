@@ -41,7 +41,9 @@ export async function POST(request: NextRequest) {
       }
     }));
 
-    const initialTerms = ingredients.map((ingredient) => romanianOfferName(ingredient));
+    const initialTerms: string[] = ingredients.map(
+      (ingredient: string) => romanianOfferName(ingredient)
+    );
     const searchTerms = await translateUnknownTermsToRomanian(ingredients, initialTerms);
 
     const offers: Offer[] = [];
